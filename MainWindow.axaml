@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TaxInvoiceExtractor.Mac.MainWindow"
+        Title="전자세금계산서 PDF → Excel 변환"
+        Width="1280" Height="820"
+        MinWidth="1050" MinHeight="720"
+        WindowStartupLocation="CenterScreen">
+  <Grid Margin="16" RowDefinitions="Auto,180,Auto,Auto,*,Auto" RowSpacing="10">
+    <TextBlock Grid.Row="0" Text="전자세금계산서 PDF → Excel 변환"
+               FontSize="24" FontWeight="Bold" Margin="0,0,0,2" />
+
+    <DataGrid x:Name="FileGrid" Grid.Row="1" ItemsSource="{Binding Files}"
+              AutoGenerateColumns="False" IsReadOnly="True"
+              SelectionMode="Single" GridLinesVisibility="All"
+              CanUserResizeColumns="True" CanUserSortColumns="False">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="순번" Binding="{Binding Sequence}" Width="70" />
+        <DataGridTextColumn Header="파일명" Binding="{Binding FileName}" Width="*" />
+        <DataGridTextColumn Header="상태" Binding="{Binding Status}" Width="140" />
+      </DataGrid.Columns>
+    </DataGrid>
+
+    <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
+      <Button x:Name="AddButton" Content="PDF 폴더 불러오기" Click="OnChooseFolderClick" />
+      <Button Content="위로" Click="OnMoveUpClick" />
+      <Button Content="아래로" Click="OnMoveDownClick" />
+      <Button Content="선택 삭제" Click="OnRemoveSelectedClick" />
+      <Button Content="전체 삭제" Click="OnClearFilesClick" />
+    </StackPanel>
+
+    <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+      <Button x:Name="ExtractButton" Grid.Column="0" Content="데이터 추출"
+              Padding="18,8" Click="OnExtractClick" />
+      <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="4">
+        <ProgressBar x:Name="ProgressBar" IsVisible="False" Minimum="0" Height="8" />
+        <TextBlock x:Name="ProgressLabel" IsVisible="False" FontSize="12" />
+      </StackPanel>
+      <Button x:Name="SaveButton" Grid.Column="2" Content="Excel로 저장"
+              Padding="18,8" IsEnabled="False" Click="OnSaveExcelClick" />
+    </Grid>
+
+    <DataGrid x:Name="ResultGrid" Grid.Row="4" ItemsSource="{Binding Results}"
+              AutoGenerateColumns="False" IsReadOnly="False"
+              SelectionMode="Single" GridLinesVisibility="All"
+              CanUserResizeColumns="True" CanUserSortColumns="False">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="순번" Binding="{Binding Sequence}" Width="60" IsReadOnly="True" />
+        <DataGridTextColumn Header="적요" Binding="{Binding Description, Mode=TwoWay}" Width="200" />
+        <DataGridTextColumn Header="공급가액" Binding="{Binding SupplyAmount, Mode=TwoWay, StringFormat=N0}" Width="120" />
+        <DataGridTextColumn Header="부가세" Binding="{Binding VatAmount, Mode=TwoWay, StringFormat=N0}" Width="110" />
+        <DataGridTextColumn Header="공급자 상호(법인명)" Binding="{Binding SupplierName, Mode=TwoWay}" Width="210" />
+        <DataGridTextColumn Header="공급받는자 상호(법인명)" Binding="{Binding BuyerName, Mode=TwoWay}" Width="230" />
+        <DataGridTextColumn Header="작성월일" Binding="{Binding IssueMonthDay, Mode=TwoWay}" Width="120" />
+      </DataGrid.Columns>
+    </DataGrid>
+
+    <TextBlock x:Name="StatusLabel" Grid.Row="5"
+               Text="PDF가 들어 있는 폴더를 선택하세요."
+               TextWrapping="Wrap" />
+  </Grid>
+</Window>

@@ -1,0 +1,4 @@
+D:\Edit Codes\Toy Project_260717\TaxInvoiceExtractor_Mac\artifacts\osx-arm64-publish\libAvaloniaNative.dylib
+D:\Edit Codes\Toy Project_260717\TaxInvoiceExtractor_Mac\artifacts\osx-arm64-publish\libHarfBuzzSharp.dylib
+D:\Edit Codes\Toy Project_260717\TaxInvoiceExtractor_Mac\artifacts\osx-arm64-publish\libSkiaSharp.dylib
+D:\Edit Codes\Toy Project_260717\TaxInvoiceExtractor_Mac\artifacts\osx-arm64-publish\TaxInvoiceExtractorMac

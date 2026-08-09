@@ -1,0 +1,11 @@
+bin/
+obj/
+tests/bin/
+tests/obj/
+artifacts/*
+!artifacts/.gitkeep
+!artifacts/BUILD-VALIDATION.md
+.DS_Store
+*.user
+*.suo
+logs/

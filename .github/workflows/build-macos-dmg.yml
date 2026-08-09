@@ -1,0 +1,37 @@
+name: Build Apple Silicon DMG
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: macos-14
+    env:
+      AVALONIA_TELEMETRY_OPTOUT: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore TaxInvoiceExtractor.Mac.sln --configfile NuGet.Config
+
+      - name: Test
+        run: dotnet test tests/TaxInvoiceExtractor.Mac.Tests.csproj --configuration Release --no-restore
+
+      - name: Build unsigned DMG
+        run: bash build-macos.sh
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: TaxInvoiceExtractor-Mac-v2-AppleSilicon
+          path: artifacts/dist/TaxInvoiceExtractor_Mac_v2_AppleSilicon.dmg
+          if-no-files-found: error

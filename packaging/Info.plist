@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>ko</string>
+  <key>CFBundleDisplayName</key>
+  <string>전자세금계산서 변환기</string>
+  <key>CFBundleExecutable</key>
+  <string>TaxInvoiceExtractorMac</string>
+  <key>CFBundleIdentifier</key>
+  <string>com.roid.taxinvoiceextractor</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleName</key>
+  <string>세금계산서 변환기</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleShortVersionString</key>
+  <string>2.0.0</string>
+  <key>CFBundleVersion</key>
+  <string>2.0.0</string>
+  <key>LSMinimumSystemVersion</key>
+  <string>12.0</string>
+  <key>LSApplicationCategoryType</key>
+  <string>public.app-category.business</string>
+  <key>NSHighResolutionCapable</key>
+  <true/>
+  <key>NSRequiresAquaSystemAppearance</key>
+  <false/>
+</dict>
+</plist>
