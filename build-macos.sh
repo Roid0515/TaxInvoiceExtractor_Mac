@@ -12,6 +12,7 @@ STAGING_DIR="$DIST_DIR/dmg-staging"
 DMG_PATH="$DIST_DIR/TaxInvoiceExtractor_Mac_v2_AppleSilicon.dmg"
 
 echo "[1/5] Apple Silicon용 앱을 게시합니다."
+rm -rf "$PUBLISH_DIR"
 dotnet publish "$ROOT_DIR/TaxInvoiceExtractor.Mac.csproj" \
   --configuration Release \
   --runtime osx-arm64 \
